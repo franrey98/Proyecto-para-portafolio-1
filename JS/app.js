@@ -12,12 +12,12 @@ eventListeners();
 function eventListeners() {
     // Cuando arranca la app
     document.addEventListener('DOMContentLoaded', iniciarApp);
-
+    
     // Validacion de URL
     linkURL.addEventListener('blur', validarFormulario);
 
     // Enviar URL 
-    // btnEnviar.addEventListener('click', enviarURL);
+    btnEnviar.addEventListener('click', obtenerDatos);
 }
 
 // Funciones 
@@ -50,7 +50,6 @@ function validarFormulario(e) {
     }
     
     if(er.test(linkURL.value)) {
-        console.log('pasaste la validacion');
         btnEnviar.disabled = false;
         btnEnviar.classList.remove('boton-disabled');
     } else {
@@ -84,14 +83,14 @@ function mostrarMensajeCorrecto() {
 
 }
 
-// function enviarURL() {
-//     let contenidoInput = document.getElementById('link').value;
 
-//     const linkAcortado = document.createElement('p');
-//     linkAcortado.textContent = `${contenidoInput}`
-//     linkAcortado.classList.add = ('estilo-link');
+function obtenerDatos() {
+    const API_URL = "https://api.shrtco.de/v2/shorten?url=";
 
-//     formulario.appendChild(linkAcortado);
-// }
-// Cuando doy click en id btnEnviar, agarra la informacion del input con id linkURL y la API hace su trabajo, y despues lo muestro en el HTML
+    callAPI();
+     function callAPI(linkURL){
+         const request = fetch(`{${API_URL}+${linkURL}`);
+         request.then((response) => response.json()).then((data) => this.renderOutput(linkURL, data.result.full_short_link));
+     } 
 
+}

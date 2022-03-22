@@ -296,6 +296,7 @@ ul li a:hover {
     width: 80%;
     height: 6rem;
     cursor: pointer;
+    transition: all 0.4s;
 }
 
 .boton-buscador a {
@@ -348,6 +349,7 @@ ul li a:hover {
         width: 15rem;
         height: 7rem;
         cursor: pointer;
+        transition: all 0.4s;
     }
     
     .boton-buscador a {
