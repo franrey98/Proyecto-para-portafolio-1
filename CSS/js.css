@@ -22,19 +22,8 @@
     color: rgb(0, 255, 85);
     font-style: italic;
     margin-top: 6px;
-}
 
-@media (min-width:768px) {
-    .link-div {
-        font-size: 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 1rem;
-        gap: 5rem;
-    }    
 }
-
 .link-div {
     font-size: 2rem;
     display: flex;
@@ -44,6 +33,19 @@
     margin-top: 1rem;
     gap: 5rem;
 }
+
+@media (min-width:768px) {
+    .link-div {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        gap: 5rem;
+    }    
+}
+
 
 .display-copy {
     display: flex;
