@@ -2,12 +2,14 @@
 const btnEnviar = document.querySelector('#boton');
 const linkURL = document.querySelector('#link');
 const formulario = document.querySelector('#formulario');
+const svgBuscador = document.querySelector('#svgbuscador');
+const copy = document.querySelector('#copy');
 
 // Expresion Regular para validar
 const er = /^(ftp|http|https):\/\/[^ "]+$/;
 
-// EventListeners 
 
+// EventListeners 
 eventListeners();
 function eventListeners() {
     // Cuando arranca la app
@@ -18,10 +20,13 @@ function eventListeners() {
 
     // Enviar URL 
     btnEnviar.addEventListener('click', obtenerDatos);
+
+    // Copy 
+    copy.addEventListener('click', copyLink)
 }
 
-// Funciones 
 
+// Funciones 
 function iniciarApp() {
     btnEnviar.disabled = true;
     btnEnviar.classList.add('boton-disabled');
@@ -69,6 +74,12 @@ function mostrarError() {
     formulario.appendChild(mensajeError)
     }
 
+    setTimeout(() => {
+        const validacionIncorrecta = document.querySelector('.validacion-incorrecta');
+        validacionIncorrecta.classList.remove('validacion-incorrecta');
+        mensajeError.remove();
+    }, 3500);
+
 }
 
 function mostrarMensajeCorrecto() {
@@ -84,13 +95,43 @@ function mostrarMensajeCorrecto() {
 }
 
 
-function obtenerDatos() {
-    const API_URL = "https://api.shrtco.de/v2/shorten?url=";
+ function obtenerDatos() {
 
-    callAPI();
-     function callAPI(linkURL){
-         const request = fetch(`{${API_URL}+${linkURL}`);
-         request.then((response) => response.json()).then((data) => this.renderOutput(linkURL, data.result.full_short_link));
-     } 
+    const linkURL = document.querySelector('#link').value;
 
+    const options = {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X-RapidAPI-Host': 'url-shortener-service.p.rapidapi.com',
+            'X-RapidAPI-Key': '4fac46de4cmsh33a3c13ec53720dp1c2ca6jsnea94adb3b57d'
+        },
+        body: new URLSearchParams({url: `${linkURL}`})
+    };
+    
+    fetch('https://url-shortener-service.p.rapidapi.com/shorten', options)
+        .then(response => response.json())
+        .then(response => mostrarUrl(response))
+     
+} 
+
+
+function mostrarUrl(response) {
+    const { result_url } = response;
+    const link = document.querySelector('#link').value;
+    const linkURL = document.querySelector('#linkURL');
+    const resultadoURL = document.querySelector('#resultadoURL');
+
+    const escondido = document.querySelector('#escondido');
+    escondido.style.visibility = 'visible';
+
+    return (resultadoURL.innerHTML = result_url) + (linkURL.innerHTML = link);
 }
+
+
+function copyLink() {
+    const resultadoURL = document.querySelector('#resultadoURL').value;
+    console.log(resultadoURL);
+}
+
+

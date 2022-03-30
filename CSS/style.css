@@ -367,6 +367,13 @@ ul li a:hover {
     }
 }
 
+/* Copy escondido */
+
+.copy-escondido {
+    visibility: hidden;
+}
+
+
 /* Seccion estadisticas*/
 
 .contenedor-estadistica {

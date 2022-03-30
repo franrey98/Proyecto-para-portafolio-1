@@ -23,3 +23,45 @@
     font-style: italic;
     margin-top: 6px;
 }
+
+.link-div {
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 5rem;
+}
+
+.display-copy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.color-link {
+    color: rgb(93, 185, 207);
+    font-weight: bold;
+}
+
+.boton-copy {
+    border-radius: 1rem;
+    background-color: hsl(180deg 75% 36%);
+    color: hsl(0deg 0% 99%);
+    border: 5px solid;
+    width: 8rem;
+    height: 4rem;
+    cursor: pointer;
+}
+
+.parrafo-link {
+    font-weight: 700;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    color: hsl(0deg 0% 0%);
+    word-break: break-all;
+
+}
+
