@@ -24,9 +24,21 @@
     margin-top: 6px;
 }
 
+@media (min-width:768px) {
+    .link-div {
+        font-size: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        gap: 5rem;
+    }    
+}
+
 .link-div {
     font-size: 2rem;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
